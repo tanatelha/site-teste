@@ -27,7 +27,10 @@ def ultimas_promocoes():
   for message in scraper.messages("promocoeseachadinhos"):
     contador += 1
     texto = message.text.strip().splitlines()[0]
-    resultado.append(f"{message.created_at} {texto}")
-    if contador == 10:
-      return resultado
+     if contador == 10:
+        break
+        
+  return f"{message.created_at} {texto}")
+   
+
 
