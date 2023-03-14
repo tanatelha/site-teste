@@ -1,4 +1,5 @@
 from flask import Flask
+from tchan import ChannelScraper
 
 app = Flask(__name__)
 
@@ -23,14 +24,11 @@ def contato():
 def ultimas_promocoes():
   scraper = ChannelScraper()
   contador = 0
-  resultado = []
   for message in scraper.messages("promocoeseachadinhos"):
     contador += 1
     texto = message.text.strip().splitlines()[0]
      if contador == 10:
-        break
-        
-  return f"{message.created_at} {texto}")
+        return f"{message.created_at} {texto}
    
 
 
