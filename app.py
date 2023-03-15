@@ -17,5 +17,5 @@ def sobre():
 
 @app.route("/contato")
 def contato():
-  return menu + "<br> Para entrar em contato com a desenvolvedora desse site basta fazer sinal de fumaça"
+  return menu + "<br> Para entrar em contato com a desenvolvedora desse site basta fazer sinal de fumaça ;)"
 
