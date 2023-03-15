@@ -1,5 +1,4 @@
 from flask import Flask
-from tchan import ChannelScraper
 
 app = Flask(__name__)
 
@@ -19,16 +18,4 @@ def sobre():
 @app.route("/contato")
 def contato():
   return menu + "Aqui vai o conteúdo da página Contato"
-
-@app.route("/promocoes")
-def ultimas_promocoes():
-  scraper = ChannelScraper()
-  contador = 0
-  for message in scraper.messages("promocoeseachadinhos"):
-    contador += 1
-    texto = message.text.strip().splitlines()[0]
-     if contador == 10:
-        return f"{message.created_at} {texto}
-   
-
 
