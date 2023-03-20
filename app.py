@@ -1,5 +1,5 @@
 from flask import Flask
-from tcha import ChannelScraper
+from tchan import ChannelScraper
 
 app = Flask(__name__)
 
