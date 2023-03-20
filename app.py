@@ -1,9 +1,20 @@
 from flask import Flask
+from tcha import ChannelScraper
 
 app = Flask(__name__)
 
+def ultimas_promocoes():
+  scraper = ChannelScraper()
+  contador = 0
+  resultado = []
+  for message in scraper.messages("promocoeseachadinhos"):
+    contador += 1
+    texto = message.text.strip().splitlines()[0]
+    if contador == 10:
+      return resultado
+
 menu = """
-<a href="/">Página inicial</a> | <a href="/sobre">Sobre</a> | <a href="/contato">Contato</a>
+<a href="/">Página inicial</a> | <a href="/promocoes">Promoções</a> | <a href="/sobre">Sobre</a> | <a href="/contato">Contato</a>
 <br>
 """
 
@@ -19,3 +30,14 @@ def sobre():
 def contato():
   return menu + "<br> Para entrar em contato com a desenvolvedora desse site basta fazer sinal de fumaça ;)"
 
+@app.route("/promocoes")
+def promocoes():
+  conteudo = menu + """
+  Encontrei as seguintes promoções no <a href="https://t.me/promocoeseachadinhos">@promocoeseachadinhos</a>:
+  <br>
+  <ul>
+  """
+  for promocoes in ultimas_promocoes():
+    conteudo += f"<li>{promocao}</li>"
+  return conteudo + "</ul>"
+  
