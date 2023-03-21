@@ -50,7 +50,7 @@ def promocoes():
 
 @app.route("/dedoduro")
 def dedoduro():
-  mensagem = {"chad_id": TELEGRAM_ADMIN_ID, "text": "Alguém acessou a página dedo duro!"}
+  mensagem = {"chat_id": TELEGRAM_ADMIN_ID, "text": "Alguém acessou a página dedo duro!"}
   resposta = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage", data=mensagem)
   return f"Mensagem enviada. Resposta ({resposta.status_code}): {resposta.text}"
   
