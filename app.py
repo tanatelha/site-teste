@@ -17,8 +17,8 @@ with open("credenciais.json", mode="w") as arquivo:
 conta = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json")
 
 api = gspread.authorize(conta)
-planilha = api.open_by_key('1ZDyxhXlCtCjMbyKvYmMt_8jAKN5JSoZ7x3MqlnoyzAM')
-sheet = planilha.worksheet('Sheet1')
+planilha = api.open_by_key('1ZDyxhXlCtCjMbyKvYmMt_8jAKN5JSoZ7x3MqlnoyzAM') # isso poderia estar em uma variável de ambiente
+sheet = planilha.worksheet('Sheet1') # isso poderia estar em uma variável de ambiente
 
 
 app = Flask(__name__)
@@ -69,7 +69,7 @@ def dedoduro():
   return f"Mensagem enviada. Resposta ({resposta.status_code}): {resposta.text}"
 
 @app.route("/dedoduro2")
-def dedoduro2:
+def dedoduro2():
   sheet.append_row(["Natalia", "Santos", "a partir do Flask"])
   return "Planilha escrita!"
   
