@@ -1,0 +1,5 @@
+requirements.py
+são as bibliotecas que vamos precisar para rodar o código - é a parte do !pip install
+
+appy.py
+importar os módulos
