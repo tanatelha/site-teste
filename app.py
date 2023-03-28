@@ -74,7 +74,7 @@ def dedoduro2():
   return "Planilha escrita!"
   
   
-@app.route("/telegram-bot")
+@app.route("/telegram-bot", methods=["POST"]) # methods é operação para enviar dados (o método mais comum é GET, para pegar informação)
 def telegram_bot():
   update = request.json 
   # colocar aqui tudo que tem dentro daquele for
