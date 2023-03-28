@@ -80,7 +80,9 @@ def telegram_bot():
   # colocar aqui tudo que tem dentro daquele for
   chat_id = update["message"]["chat"]["id"]
   message = update["message"]["text"]
-  nova_mensagem = {"chat_id": chat_id, "text": message}
+  
+  mensagem = f'{message} é você'
+  nova_mensagem = {"chat_id": chat_id, "text": mensagem}
   requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage", data = nova_mensagem)
   return "ok"
   
