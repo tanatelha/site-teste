@@ -4,7 +4,7 @@ import os   # para acessar as variáveis de ambiente
 # bibliotecas externas: import em ordem alfabética e depois froms em ordem alfabética
 import gspread
 import requests
-from flask import Flask
+from flask import Flask, request
 from oauth2client.service_account import ServiceAccountCredentials 
 from tchan import ChannelScraper
 
@@ -72,4 +72,15 @@ def dedoduro():
 def dedoduro2():
   sheet.append_row(["Natalia", "Santos", "a partir do Flask"])
   return "Planilha escrita!"
+  
+  
+@app.route("/telegram-bot")
+def telegram_bot():
+  update = request.json 
+  # colocar aqui tudo que tem dentro daquele for
+  chat_id = update["message"]["chat"]["id"]
+  message = update["message"]["text"]
+  nova_mensagem = {"chat_id": chat_id, "text": message}
+  requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage", data = nova_mensagem)
+  return "ok"
   
