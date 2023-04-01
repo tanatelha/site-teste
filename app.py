@@ -76,7 +76,8 @@ def dedoduro2():
   
 @app.route("/telegram-bot", methods=["POST"]) # methods é operação para enviar dados (o método mais comum é GET, para pegar informação)
 def telegram_bot():
-  update = request.json 
+  update = requests.json 
+ 
   # colocar aqui tudo que tem dentro daquele for
   chat_id = update["message"]["chat"]["id"]
   message = update["message"]["text"]
